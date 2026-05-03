@@ -1,0 +1,288 @@
+/* ═══════════════════════════════════
+   SECTIONS.CSS — Hero, Evolution, Phases, CTA
+═══════════════════════════════════ */
+
+/* ─── HERO ─── */
+.hero {
+    height: 100vh; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
+}
+.hero-sky {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+        #1c0a3e 0%, #4a1860 18%,
+        #c45010 48%, #e8800a 65%,
+        #f5b830 80%, #fce478 92%,
+        #e8f870 100%
+    );
+}
+.hero-nature {
+    position: absolute; inset: 0; overflow: hidden;
+}
+.nature-layer {
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; will-change: transform;
+}
+.layer-mountains { height: 45%; }
+.layer-trees-far { height: 65%; }
+.layer-trees-near { height: 75%; }
+.layer-grass { height: 30%; }
+
+.hero-particles { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+.particle { position: absolute; border-radius: 50%; }
+
+.hero-content {
+    position: relative; z-index: 5;
+    max-width: 1000px; padding: 0 40px;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+}
+.eyebrow {
+    font-size: 0.65rem; letter-spacing: 8px; text-transform: uppercase;
+    color: #fce478; margin-bottom: 28px; opacity: 0;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.7);
+}
+.hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem,7.5vw,8rem); font-weight: 300;
+    line-height: 1.05; margin-bottom: 28px; opacity: 0;
+    color: #fff;
+}
+.hero-h1 em { font-style: italic; color: #fce478; }
+.hero-p {
+    font-size: 0.82rem; font-weight: 300; line-height: 1.9;
+    color: rgba(255,245,220,0.75); max-width: 480px;
+    margin: 0 auto 48px; opacity: 0;
+}
+.hero-btn {
+    display: inline-flex; align-items: center; gap: 18px;
+    color: #fff; text-decoration: none; font-size: 0.7rem;
+    letter-spacing: 4px; text-transform: uppercase; font-weight: 300;
+    opacity: 0; transition: color .3s;
+}
+.hero-btn .btn-line { width: 60px; height: 1px; background: #fce478; transition: width .4s; }
+.hero-btn:hover { color: #fce478; }
+.hero-btn:hover .btn-line { width: 100px; }
+.scroll-bar {
+    position: absolute; bottom: 0; left: 50%; width: 1px; height: 90px;
+    background: linear-gradient(to bottom, transparent, #fce478);
+    transform: translateX(-50%) scaleY(0); transform-origin: top; z-index: 6;
+}
+
+/* ─── EVOLUTION SECTION ─── */
+.evo-section {
+    height: 450vh; position: relative;
+}
+.evo-sticky {
+    position: sticky; top: 0; height: 100vh; overflow: hidden;
+}
+.evo-sky {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+        #0a2040 0%, #0d4a6e 25%,
+        #1a7eb8 55%, #2aaccf 75%,
+        #3ac8a8 90%, #28c45a 100%
+    );
+}
+.evo-nature {
+    position: absolute; inset: 0; overflow: hidden;
+}
+.evo-hills { position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; }
+.evo-trees-far { position: absolute; bottom: 0; left: 0; width: 100%; height: 70%; }
+.evo-trees-near { position: absolute; bottom: 0; left: 0; width: 100%; height: 80%; }
+.evo-bushes { position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; }
+.evo-grass-front { position: absolute; bottom: 0; left: 0; width: 100%; height: 28%; }
+
+/* Light rays */
+.light-rays {
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-conic-gradient(
+        from 270deg at 50% -20%,
+        rgba(255,240,180,0.04) 0deg,
+        transparent 3deg,
+        transparent 10deg,
+        rgba(255,240,180,0.03) 13deg,
+        transparent 16deg
+    );
+    animation: ray-spin 40s linear infinite;
+}
+@keyframes ray-spin { to { transform: rotate(360deg); } }
+
+/* Canvas */
+#chicken-canvas {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; border-radius: 50%;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
+}
+
+/* EVO UI */
+.evo-ui {
+    position: absolute; inset: 0; z-index: 20;
+    display: flex; flex-direction: column;
+    align-items: center; pointer-events: none;
+    padding: 100px 40px 50px;
+}
+.evo-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem,3vw,3rem); font-weight: 300;
+    line-height: 1.2; text-align: center; margin-bottom: 0;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.evo-title em { font-style: italic; color: #b0f8c8; }
+
+/* Progress bar */
+.evo-progress-bar {
+    width: 200px; height: 2px; background: rgba(255,255,255,0.15);
+    margin: 24px 0 30px; border-radius: 2px; overflow: hidden;
+}
+.evo-pb-fill {
+    height: 100%; width: 0; background: linear-gradient(to right, #48d055, #b0f8c8);
+    border-radius: 2px; transition: width .1s linear;
+}
+
+/* Stage indicators */
+.evo-stages {
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 0;
+}
+.evo-stage {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    cursor: default;
+}
+.evo-stage span {
+    font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); font-weight: 300; transition: color .4s;
+}
+.evo-stage.active span { color: rgba(255,255,255,0.9); }
+.s-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    background: transparent; transition: background .4s, border-color .4s;
+}
+.evo-stage.active .s-dot { background: #b0f8c8; border-color: #b0f8c8; }
+.evo-stage-connector {
+    width: 60px; height: 1px; background: rgba(255,255,255,0.15);
+    margin: 0 8px; margin-bottom: 18px;
+}
+
+/* Stage info text */
+.evo-stage-info {
+    position: absolute; bottom: 60px; left: 50%;
+    transform: translateX(-50%); text-align: center; width: 600px; max-width: 90vw;
+}
+.stage-info-block {
+    transition: opacity .5s; opacity: 1; pointer-events: none;
+}
+.stage-info-block.hidden { opacity: 0; position: absolute; left: 0; right: 0; }
+.stage-info-block h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    font-weight: 300; color: #b0f8c8; margin-bottom: 8px; letter-spacing: 2px;
+}
+.stage-info-block p {
+    font-size: 0.78rem; font-weight: 300; letter-spacing: 1px;
+    color: rgba(255,255,255,0.55); line-height: 1.8;
+}
+
+/* ─── HORIZONTAL SCROLL PHASES ─── */
+.h-outer { overflow: hidden; position: relative; }
+.h-track { display: flex; width: 300vw; will-change: transform; }
+.phase { width: 100vw; height: 100vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; flex-shrink: 0; }
+.phase-visual { position: relative; overflow: hidden; }
+.phase-photo { position: absolute; inset: -10%; background-size: cover; background-position: center; will-change: transform; }
+.phase-fade-r { position: absolute; inset: 0; }
+.phase-copy {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 80px 70px; position: relative;
+}
+.ph-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 9rem; font-weight: 300;
+    position: absolute; top: 50px; right: 50px; line-height: 1; user-select: none;
+    opacity: 0.07;
+}
+.ph-tag { font-size: 0.62rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 22px; }
+.ph-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,3vw,3.5rem); font-weight: 300; line-height: 1.2; margin-bottom: 28px; }
+.ph-h2 em { font-style: italic; }
+.ph-rule { height: 1px; width: 0; margin-bottom: 28px; }
+.ph-p { font-size: 0.85rem; line-height: 1.95; font-weight: 300; opacity: 0.55; max-width: 440px; }
+
+/* Phase color themes */
+.phase-1 { background: linear-gradient(135deg, #2d1200 0%, #5a2800 100%); }
+.phase-1 .phase-fade-r { background: linear-gradient(to right, transparent, rgba(45,18,0,0.92)); }
+.phase-1 .ph-tag { color: #f5c048; }
+.phase-1 .ph-h2 em { color: #f5d888; }
+.phase-1 .ph-num { color: #f5c048; }
+.phase-1 .ph-rule { background: #f5c048; }
+
+.phase-2 { background: linear-gradient(135deg, #0a3a1a 0%, #165a28 100%); }
+.phase-2 .phase-fade-r { background: linear-gradient(to right, transparent, rgba(10,58,26,0.92)); }
+.phase-2 .ph-tag { color: #5ad878; }
+.phase-2 .ph-h2 em { color: #90f0a8; }
+.phase-2 .ph-num { color: #5ad878; }
+.phase-2 .ph-rule { background: #5ad878; }
+
+.phase-3 { background: linear-gradient(135deg, #3d1800 0%, #6b3010 100%); }
+.phase-3 .phase-fade-r { background: linear-gradient(to right, transparent, rgba(61,24,0,0.92)); }
+.phase-3 .ph-tag { color: #e88040; }
+.phase-3 .ph-h2 em { color: #f0b080; }
+.phase-3 .ph-num { color: #e88040; }
+.phase-3 .ph-rule { background: #e88040; }
+
+/* ─── CTA ─── */
+.cta-wrap {
+    height: 100vh; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
+}
+.cta-photo {
+    position: absolute; inset: -20%;
+    background: url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=1920&auto=format&fit=crop') center/cover;
+    will-change: transform;
+}
+.cta-dim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+        rgba(20,0,40,0.75) 0%,
+        rgba(80,10,120,0.55) 50%,
+        rgba(180,30,10,0.7) 100%
+    );
+}
+.cta-nature-layer {
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 25%; z-index: 2;
+}
+.cta-body { position: relative; z-index: 3; max-width: 800px; padding: 0 40px; }
+.cta-tag { font-size: 0.62rem; letter-spacing: 6px; text-transform: uppercase; color: #f0b0f8; display: block; margin-bottom: 28px; }
+.cta-h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem,5.5vw,6rem);
+    font-weight: 300; line-height: 1.1; margin-bottom: 50px; color: #fff;
+}
+.cta-h2 em { font-style: italic; color: #f8c0ff; }
+.btn-wa {
+    display: inline-flex; align-items: center; padding: 18px 50px;
+    border: 1px solid rgba(240,176,248,0.5); color: #f0b0f8; text-decoration: none;
+    font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 400;
+    position: relative; overflow: hidden; transition: color .4s;
+}
+.btn-wa::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, #8b20a0, #d0408a);
+    transform: translateX(-101%); transition: transform .45s cubic-bezier(.77,0,.175,1);
+}
+.btn-wa span { position: relative; z-index: 1; }
+.btn-wa:hover { color: #fff; }
+.btn-wa:hover::before { transform: translateX(0); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 900px) {
+    .h-track { flex-direction: column; width: 100vw; }
+    .phase { grid-template-columns: 1fr; width: 100vw; height: auto; min-height: 100vh; }
+    .phase-visual { height: 45vh; }
+    .phase-photo { inset: 0; }
+    .phase-copy { padding: 50px 24px; }
+    .ph-rule { width: 60px; }
+    .evo-stage-info { width: 90vw; }
+    .evo-stage-connector { width: 30px; }
+    #chicken-canvas { width: 85vw !important; height: 85vw !important; }
+}
